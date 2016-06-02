@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+		<meta charset="utf-8">
+		<title>It's Written in the Stars</title>
+
+		<!-- site dependencies -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.css" rel="stylesheet">
+		<link href="http://seiyria.com/bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet">
+		<link href="assets/css/final_project.css" rel="stylesheet">
+
+
+</head>
+<body>
+	<!-- begin wrap -->	
+	<div class=".col-xs-12 .col-md-8">	
+	<h1>
+It's Written in the Stars:
+</h1>
+<i>By Ashley Yu and Dana Li</i><p>
+As part of Yelp’s <a href='https://www.yelp.com/dataset_challenge'>Dataset Challenge</a>, they have made the data for over 77K businesses available. Attributes of the API include categories, location, price range, stars, etc. We have taken the raw data and parsed it down to one city (Las Vegas) and one type of business (restaurants) via server side pre-formatting, resulting in approximately 5K entries. 
+<p>
+We have created an interactive data visualization of the restaurants in Las Vegas, which allows users to explore the data for themselves in an aesthetically pleasing way. Whether they wish to quickly determine viable restaurants to visit or draw conclusions about trends, they are able to do so through dynamic filtering on attributes and view relevant charts with the number of reviews, price range, and information about the businesses. The charts are built with DC.js and Crossfilter, and they allow for a quick view of trends and drill downs on specific attributes. The word cloud is a customized D3 visualization that takes the categories attribute from each data point and displays them, with size corresponding to the number of occurrences in the set. The word cloud re-calculates its visualization each time a unique filter is applied. The map visualization shows the density of businesses in various districts and trends by location. The map also dynamically updates as filters are applied, and can itself serve as a filter based on zoom views. Finally, a data table shows a list of restaurants and their relevant information, depending on what’s been filtered.
+<p> 
+Libraries used include:<br> <a href="https://github.com/dc-js/dc.js" target="_blank">DC.js (Version: 1.7.5)</a>, <a href="https://github.com/mbostock/d3" target="_blank">D3.js (Version 3.5.6)</a>, <a href="https://github.com/jashkenas/underscore" target="_blank">Underscore.js (Version: 1.8.3)</a>, and <a href="https://github.com/square/crossfilter" target="_blank">Crossfilter.js (Version: 1.3.12)</a>
+
+
+<div id="filters">
+  <h2>Filters:</h2>
+  <hr>
+  <div id="resetButton"> </div>
+  <div id="rating_title" style="float: left"></div>
+  <div id="piechartstars" style="float: left"></div>
+  <div id="reservations_title" style="float: left"></div>
+  <div id="piechart" style="float: left"></div>
+  <div id="alcohol_title" style="float: left"></div>
+  <div id="piechartalcohol" style="float: left"></div>
+  <div id="ambience_title" style="float: left"></div>
+  <div id="piechartambience" style="float: left"></div>
+</div>
+
+<div id="middlecont">
+  <hr>
+
+  <div id="plots" style="float: left">
+    <h2>Plots:</h2>
+    <i>Number of Reviews:</i>
+
+    <div id="barchart" style="border: thin dotted black"> </div>
+    <i>Price Range:</i>
+    <div id="barchartprice" style="border: thin dotted black"> </div>
+    <i>Average # of reviews by rating:</i>
+    <div id="avgchart" style="border: thin dotted black"> </div>
+  </div>
+
+  <div id="cloud">
+    <h2>Word Cloud:</h2>
+    <i>Based on Categories the businesss is classified as</i>
+    <svg id="wordcloud"></svg>
+  </div>
+
+  <div id="map-cont">
+    <h2>Map:</h2>
+    <i>Plot of all restaurants within filter ranges</i>
+    <div id="map-div"></div>
+  </div>
+
+</div>
+
+<div id="datatable">
+  <table class="table table-bordered table-striped" id="data-table" border="1">
+    <thead>
+      <tr class="header">
+        <th>Name</th>
+        <th>Price</th>
+        <th>Categories</th>
+        <th>Address</th>
+        <th># Stars</th>
+        <th># Reviews</th>
+
+      </tr>
+    </thead>
+  </table>
+
+</div>
+</div>
+
+
+	<!-- end wrap -->	
+
+	<!-- begin footer -->
+	<div id="footer">
+	  <div class="container">
+			
+	  </div>
+	</div>
+	<!-- end footer -->
+
+	<!-- processing_random_triangle_meshes dependencies -->
+	<!--<script src='https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.16/processing.min.js'></script>
+	<script src='assets/js/random_triangle_meshes/random_triangle_meshes.js'></script> -->
+
+	<!-- final project stuff -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dc/1.7.1/dc.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.7/crossfilter.js'></script>
+    <script src='http://seiyria.com/bootstrap-slider/js/bootstrap-slider.js'></script> 
+    <script src='http://seiyria.com/bootstrap-slider/dependencies/js/jquery.min.js'></script>
+    <script src='http://maps.googleapis.com/maps/api/js'></script>
+    <script src='https://cdn.rawgit.com/jasondavies/d3-cloud/v1.2.1/build/d3.layout.cloud.js'></script>
+    <script src='assets/js/final_project/final_project.js'></script>
+
+
+
+</body>
+</html>
